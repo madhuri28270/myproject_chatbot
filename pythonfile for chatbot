@@ -1,0 +1,127 @@
+"""
+This is a program for the chatbot
+This bot starts with a greeting and asks for your name
+The bot wishes the person
+The bot gives the person a choice and it will run accordingly with the persons choice
+At last it again wishes
+
+"""
+import random
+from datetime import datetime
+
+
+def introduce():
+    responses = [
+       "HI,IAM BOT,I WLL TELL YOU THE SYMPTOMS OF YOUR HEALTH ISSUES,AND I WILL SUGGEST THE MEDICINES TO CURE YOUR SYMPTOMS.MAY I KNOW YOUR NAME PLEASE?",
+       "IT,iS SO NICE IN TOUCH WITH YOU,I WLL TELL YOU THE SYMPTOMS OF YOUR HEALTH ISSUES,AND I WILL SUGGEST THE MEDICINES TO CURE YOUR SYMPTOMS.MAY I KNOW YOUR NAME PLEASE?"
+     ]         
+    print(random.choice(responses)) 
+ 
+
+def get_time():
+     current_time=datetime.now()
+     greeting = "Good Morning"
+     if current_time.hour > 12 and current_time.hour < 17:
+         greeting = "Good Afternoon"
+     elif current_time.hour >= 17 and current_time.hour < 22:
+         greeting = " Good Evening"
+     elif current_time.hour >= 22:
+         greeting= "Hi, Its late"
+     return greeting
+
+def welcome(name):
+    messages = [
+        "Nice to meet you,WHICH HEALTH PROBLEM SYMPTOMS YOU WOULD WANT TO KNOW?"
+        "lets have some good time together,WHICH HEALTH PROBLEM SYMPTOMS YOU WOULD WANT TO KNOW?"
+    ]
+
+    print(f"{get_time},{random.choice(messages)}")
+
+def show():
+    print("1.cold")
+    print("2.fever")
+    print("3.cough")
+    print("4.acedity")
+    print("5.migrain")
+    print("6.bye,end this chat")
+    try:
+        return int(input("Enter your choice [1-5]"))
+    except:
+        print("enter choice only in the given range")
+
+def prescription():
+    print("Do you want to know about the prescription?")
+
+
+
+
+def bot():
+    introduce()
+    name = input("Your Name: ")
+    welcome(name)
+    choice = show()
+    while choice != 6:
+        if choice == 1:
+            list = ['Runny nose (clear and watery)','Sneezing','Fatigue','Cough']
+            for char in list:
+                print(char)
+            prescription()
+            medicine=input("enter yes or no")
+            descision = "yes"
+            if(medicine == descision):
+                print('Tylenol Cold + Head Congestion at Rite Aid','Genexa Cold Crush Tablets at GNC')
+                print("WISH YOU A GOOD HEALTH")
+            else:
+                print("WISH YOU A GOOD HEALTH")
+        elif choice == 2:
+            list = ['Sweating','Chills and shivering','Headache','Muscle aches','Loss of appetite','Irritability','Dehydration','General weakness']
+            for char in list:
+                print(char)
+            prescription()
+            medicine=input("enter yes or no")
+            descision = "yes"
+            if(medicine == descision):
+                print("acetaminophen (Tylenol, others)","ibuprofen (Advil, Motrin IB, others)","aspirin")
+                print("WISH YOU A GOOD HEALTH")
+            else:
+                 print("WISH YOU A GOOD HEALTH")
+        elif choice == 3:
+            list = ['A runny or stuffy nose','A feeling of liquid running down the back of your throat (postnasal drip)','Frequent throat clearing and sore throat','Hoarseness','Wheezing and shortness of breath','Heartburn or a sour taste in your mouth']
+            for char in list:
+                print(char) 
+            prescription()
+            medicine=input("enter yes or no")
+            descision = "yes"
+            if(medicine == descision):
+                print("There are 2 types of OTC cough medicines: antitussives and expectorants. A common antitussive is dextromethorphan")
+                print("WISH YOU A GOOD HEALTH") 
+            else:
+                print("WISH YOU A GOOD HEALTH")   
+        elif choice == 4:
+            list = ['A burning sensation in your chest (heartburn), usually after eating, which might be worse at night','Chest pain','Difficulty swallowing','Regurgitation of food or sour liquid','Sensation of a lump in your throat']
+            for char in list:
+                print(char) 
+            prescription()
+            medicine=input("enter yes or no")
+            descision = "yes"
+            if(medicine == descision):
+                print("Antacids that neutralize stomach acid. Antacids, such as Mylanta, Rolaids and Tums, may provide quick relief")
+                print("WISH YOU A GOOD HEALTH")
+            else:
+                print("WISH YOU A GOOD HEALTH")
+        elif choice == 5:
+            list = ['Pain usually on one side of your head, but often on both sides','Pain that throbs or pulses','Sensitivity to light, sound, and sometimes smell and touch','Nausea and vomiting']
+            for char in list:
+                print(char) 
+            prescription()
+            medicine=input("enter yes or no")
+            descision = "yes"
+            if(medicine == descision):
+                print("aspirin + acetaminophen + caffeine","ibuprofen","acetaminophen")
+                print("WISH YOU A GOOD HEALTH")
+            else:
+                 print("WISH YOU A GOOD HEALTH")
+        else:
+             print("I didnot get you")
+        choice = show()
+bot()
